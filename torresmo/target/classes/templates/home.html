@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{layout :: layout('Home - Torresmo Delivery', ~{::content})}">
+  <body>
+    <div th:fragment="content">
+      <!-- Hero Section -->
+      <div class="bg-danger text-white rounded-3 p-5 mb-4">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h1 class="display-4 fw-bold mb-3">🐷 Torresmo Delivery</h1>
+            <p class="lead mb-4">
+              O melhor torresmo da cidade, crocante e saboroso, entregue quentinho na sua casa!
+            </p>
+            <div class="d-flex gap-3">
+              <a th:href="@{/produtos}" class="btn btn-light btn-lg">Ver Cardápio</a>
+              <a th:href="@{/pedido/acompanhar}" class="btn btn-outline-light btn-lg">
+                Acompanhar Pedido
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destaques -->
+      <div class="mb-5">
+        <h2 class="mb-4">🔥 Produtos em Destaque</h2>
+        <div class="row g-4">
+            <div class="col-md-4" th:each="produto : ${produtosDestaque}">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="display-4 mb-3">🔥</div>
+                        <h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
+                        <p class="card-text text-muted" th:text="${produto.descricao}">Descrição</p>
+                        <p class="fw-bold" th:text="'R$ ' + ${produto.preco}">Preço</p>
+                        <!-- Botão Comprar apenas visual -->
+                        <button class="btn btn-danger mt-3 w-50">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- Produtos em Destaque -->
+      <div class="mb-5">
+      <!-- Como Funciona -->
+      <div class="mb-5">
+        <h2 class="mb-4">📋 Como Fazer seu Pedido</h2>
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="text-center">
+              <div
+                class="rounded-circle bg-danger text-white d-inline-flex align-items-center justify-content-center mb-3"
+                style="width: 60px; height: 60px">
+                <span class="h4 mb-0">1</span>
+              </div>
+              <h5>Escolha</h5>
+              <p class="text-muted small">Navegue pelo cardápio e escolha seus favoritos</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-center">
+              <div
+                class="rounded-circle bg-danger text-white d-inline-flex align-items-center justify-content-center mb-3"
+                style="width: 60px; height: 60px">
+                <span class="h4 mb-0">2</span>
+              </div>
+              <h5>Adicione</h5>
+              <p class="text-muted small">Adicione os produtos ao carrinho</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-center">
+              <div
+                class="rounded-circle bg-danger text-white d-inline-flex align-items-center justify-content-center mb-3"
+                style="width: 60px; height: 60px">
+                <span class="h4 mb-0">3</span>
+              </div>
+              <h5>Finalize</h5>
+              <p class="text-muted small">Complete seu pedido e escolha a forma de pagamento</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="text-center">
+              <div
+                class="rounded-circle bg-danger text-white d-inline-flex align-items-center justify-content-center mb-3"
+                style="width: 60px; height: 60px">
+                <span class="h4 mb-0">4</span>
+              </div>
+              <h5>Receba</h5>
+              <p class="text-muted small">Aguarde a entrega quentinha na sua casa</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Final -->
+      <div class="bg-light rounded-3 p-5 text-center">
+        <h3 class="mb-3">Ficou com água na boca? 🤤</h3>
+        <p class="lead text-muted mb-4">Faça seu pedido agora e receba em até 30 minutos!</p>
+        <a th:href="@{/produtos}" class="btn btn-danger btn-lg">Ver Cardápio Completo</a>
+      </div>
+    </div>
+  </body>
+</html>
